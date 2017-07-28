@@ -1,0 +1,25 @@
+
+[[local|localrc]]
+## Telemetry
+CEILOMETER_BACKEND=mongodb
+enable_plugin panko https://git.openstack.org/openstack/panko
+
+enable_plugin ceilometer https://git.openstack.org/openstack/ceilometer
+enable_plugin aodh https://git.openstack.org/openstack/aodh
+
+
+# Enable the aodh alarming services
+#enable_plugin aodh http://git.trystack.cn/openstack/aodh
+
+# Enable the Ceilometer devstack plugin
+#enable_plugin ceilometer http://git.trystack.cn/openstack/ceilometer stable/ocata
+
+# Enable gnocchi
+enable_plugin gnocchi http://git.trystack.cn/openstack/gnocchi stable/2.1
+enable_service gnocchi-api,gnocchi-metricd
+enable_service gnocchi-grafana
+
+
+
+
+

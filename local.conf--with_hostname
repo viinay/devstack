@@ -1,0 +1,4 @@
+[[local|localrc]]
+HOST_IP=<IP address>
+SERVICE_HOST=<hostname>
+#...

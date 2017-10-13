@@ -1,0 +1,39 @@
+[[local|localrc]]
+## Telemetry
+CEILOMETER_BACKEND=mongodb
+enable_plugin panko https://git.openstack.org/openstack/panko
+
+enable_plugin ceilometer https://git.openstack.org/openstack/ceilometer
+enable_service ceilometer-api,ceilometer-collector
+enable_service ceilometer-acompute
+enable_service ceilometer-alarm-notifier,ceilometer-alarm-evaluator
+
+enable_plugin aodh https://git.openstack.org/openstack/aodh
+enable_plugin designate https://git.openstack.org/openstack/designate
+enable_service designate,designate-central,designate-api,designate-pool-manager,designate-zone-manager,designate-mdns
+
+
+# Enable the aodh alarming services
+#enable_plugin aodh http://git.trystack.cn/openstack/aodh
+
+# Enable the Ceilometer devstack plugin
+#enable_plugin ceilometer http://git.trystack.cn/openstack/ceilometer stable/ocata
+
+# Enable gnocchi
+#enable_plugin gnocchi http://git.trystack.cn/openstack/gnocchi stable/2.1
+#enable_service gnocchi-api,gnocchi-metricd
+#enable_service gnocchi-grafana
+
+
+# Logging
+LOGFILE=$DEST/logs/stack.sh.log
+VERBOSE=True
+LOG_COLOR=False
+SCREEN_LOGDIR=$DEST/logs/screen
+
+
+
+MONASCA_API_IMPLEMENTATION_LANG=${MONASCA_API_IMPLEMENTATION_LANG:-python}
+MONASCA_PERSISTER_IMPLEMENTATION_LANG=${MONASCA_PERSISTER_IMPLEMENTATION_LANG:-python}
+MONASCA_METRICS_DB=${MONASCA_METRICS_DB:-influxdb}
+enable_plugin monasca-api git://git.openstack.org/openstack/monasca-api
